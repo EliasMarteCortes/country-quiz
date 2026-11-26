@@ -20,4 +20,51 @@ public class Country {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public String getName() {
+        return name; 
+    }
+
+    public String getCapital() {
+        return capital; 
+    }
+    public String getRegion() {
+        return region; 
+    }
+    public String getSubregion() {
+        return subregion; 
+    }
+    public String getLanguages() {
+        return languages; 
+    }
+
+    public boolean isLandlocked() {
+        return landlocked; 
+    }
+
+    public double getLatitude() {
+        return latitude; 
+    }
+
+    public double getLongitude() {
+        return longitude; 
+    }
+
+
+    public void setName(String name) {
+        this.name = name; 
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital; 
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages; 
+    }
+
+    public String toString() {
+        return name + " - capital: " + capital + ", region: " + subregion
+                + ", languages: " + languages + ", landlocked: " + landlocked;
+    }
 }
