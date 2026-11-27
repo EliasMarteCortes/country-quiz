@@ -5,11 +5,35 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Country> countries = new ArrayList<>();
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) throws FileNotFoundException {
         loadCountries();
         System.out.println("Loaded " + countries.size() + " countries.");
-        System.out.println(countries.get(0));
+        boolean running = true;
+        while (running) {
+            printMenu();
+            String choice = input.nextLine();
+
+            if (choice.equals("1") || choice.equals("2") || choice.equals("3")) {
+                System.out.println("Game");
+            } else if (choice.equals("4")) {
+                running = false;
+                System.out.println("Thanks for playing!");
+            } else {
+                System.out.println("Please enter 1, 2, 3, or 4.");
+            }
+        }
+    }
+
+    public static void printMenu() {
+        System.out.println();
+        System.out.println("===== COUNTRY QUIZ =====");
+        System.out.println("1. Guess from clues");
+        System.out.println("2. Computer guesses your country");
+        System.out.println("3. Country Hunt");
+        System.out.println("4. Quit");
+        System.out.print("Choose an option: ");
     }
 
     public static void loadCountries() throws FileNotFoundException {
