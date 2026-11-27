@@ -2,10 +2,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
     static ArrayList<Country> countries = new ArrayList<>();
     static Scanner input = new Scanner(System.in);
+    static Random random = new Random();
 
     public static void main(String[] args) throws FileNotFoundException {
         loadCountries();
@@ -43,6 +45,11 @@ public class Main {
             }
         }
         return null;
+    }
+
+    public static Country randomCountry() {
+        int index = random.nextInt(countries.size());
+        return countries.get(index);
     }
 
     public static void loadCountries() throws FileNotFoundException {
