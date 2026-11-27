@@ -36,6 +36,15 @@ public class Main {
         System.out.print("Choose an option: ");
     }
 
+    public static Country findCountry(String name) {
+        for (Country c : countries) {
+            if (c.getName().equalsIgnoreCase(name.trim())) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public static void loadCountries() throws FileNotFoundException {
         Scanner file = new Scanner(new File("countries.csv"));
         file.nextLine();
