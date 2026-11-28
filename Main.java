@@ -17,12 +17,17 @@ public class Main {
             printMenu();
             String choice = input.nextLine();
 
-            if (choice.equals("1") || choice.equals("2") || choice.equals("3")) {
-                System.out.println("Game");
-            } else if (choice.equals("4")) {
+            if (choice.equals("1")) {
+                playClues();
+            } 
+            else if (choice.equals("2") || choice.equals("3")) {
+                System.out.println("Coming soon!");
+            } 
+            else if (choice.equals("4")) {
                 running = false;
                 System.out.println("Thanks for playing!");
-            } else {
+            } 
+            else {
                 System.out.println("Please enter 1, 2, 3, or 4.");
             }
         }
@@ -36,6 +41,33 @@ public class Main {
         System.out.println("3. Country Hunt");
         System.out.println("4. Quit");
         System.out.print("Choose an option: ");
+    }
+
+    public static int playClues() {
+        Country secret = randomCountry();
+        String[] clues = {
+            "It's in " + secret.getRegion() + ".",
+            "More specifically, it's in " + secret.getSubregion() + ".",
+            "Language(s): " + secret.getLanguages() + ".",
+            "Its capital starts with " + secret.getCapital().charAt(0) + ".",
+            "Its capital is " + secret.getCapital() + "."
+        };
+
+        System.out.println("\n--- GUESS FROM CLUES ---");
+        for (int i = 0; i < clues.length; i++) {
+            System.out.println("Clue " + (i + 1) + ": " + clues[i]);
+            System.out.print("Your guess: ");
+            String guess = input.nextLine();
+
+            if (guess.equalsIgnoreCase(secret.getName())) {
+                int points = clues.length - i;
+                System.out.println("Correct! +" + points + " points.");
+                return points;
+            }
+            System.out.println("Nope!");
+        }
+        System.out.println("Out of clues. It was " + secret.getName() + ".");
+        return 0;
     }
 
     public static Country findCountry(String name) {
